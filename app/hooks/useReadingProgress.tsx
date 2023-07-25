@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 export function useReadingProgress() {
   const storedCompletion = localStorage.getItem('readingProgress');
 
-  const [completion, setCompletion] = useState(
+  const [completion, setCompletion] = useState<number>(
     storedCompletion ? parseFloat(storedCompletion) : 0
   );
 
@@ -18,10 +18,10 @@ export function useReadingProgress() {
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
 
-      const progress = (totalScroll / windowHeight) * 100;
+      const currentProgress = (totalScroll / windowHeight) * 100;
 
-      setCompletion(progress);
-      localStorage.setItem('readingProgress', progress.toString());
+      setCompletion(currentProgress);
+      localStorage.setItem('readingProgress', currentProgress.toString());
     };
 
     // TODO: make smooth scroll animation
