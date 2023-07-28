@@ -20,8 +20,10 @@ export function useReadingProgress() {
 
       const currentProgress = (totalScroll / windowHeight) * 100;
 
-      setCompletion(currentProgress);
-      localStorage.setItem('readingProgress', currentProgress.toString());
+      requestAnimationFrame(() => {
+        setCompletion(currentProgress);
+        localStorage.setItem('readingProgress', currentProgress.toString());
+      });
     };
 
     // TODO: make smooth scroll animation

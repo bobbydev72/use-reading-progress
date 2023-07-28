@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useReadingProgress } from '@/app/hooks/useReadingProgress';
 
 export const ProgressScrollBar: React.FC = () => {
   const completion = useReadingProgress();
+
+  console.log(completion);
 
   return (
     <span
